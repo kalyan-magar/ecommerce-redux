@@ -61,28 +61,30 @@ const CommonForm = (
       
     case "select":
       return (
-        <select 
-         onValueChange={(value) =>
-              setFormData({
-                ...formData,
-                [getControlItem.name]: value,
-              })
-            } name={getControlItem.name} id={getControlItem.name} value={value}>
-        <SelectTrigger className="w-full">
-              <SelectValue placeholder={getControlItem.label} />
-            </SelectTrigger>
-              <SelectContent>
-
-               {getControlItem.options && getControlItem.options.length > 0
-                ? getControlItem.options.map((optionItem) => (
-                    <SelectItem key={optionItem.id} value={optionItem.id}>
-                      {optionItem.label}
-                    </SelectItem>
-                  ))
-                : null}
-            </SelectContent>
-
-        </select>
+        <Select
+          name={getControlItem.name}
+          id={getControlItem.name}
+          value={value}
+          onValueChange={(value) =>
+            setFormData({
+              ...formData,
+              [getControlItem.name]: value,
+            })
+          }
+        >
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder={getControlItem.label} />
+          </SelectTrigger>
+          <SelectContent>
+            {getControlItem.options && getControlItem.options.length > 0
+              ? getControlItem.options.map((optionItem) => (
+                  <SelectItem key={optionItem.id} value={optionItem.id}>
+                    {optionItem.label}
+                  </SelectItem>
+                ))
+              : null}
+          </SelectContent>
+        </Select>
       );
 
     case "checkbox":
